@@ -5,32 +5,37 @@ const WAGE_PER_HOUR: number = 20;
 const FULL_DAY_HOUR: number = 8;
 const PART_TIME_HOUR: number = 4;
 const DAYS_IN_MONTH: number = 20;
-let totalSalary = 0;
-let day = 1;
+const MAX_WORK_HOURS: number = 100;
+let totalSalary: number = 0;
+let days: number = 0;
+let hours: number = 0;
 let empCheck: number = Math.floor(Math.random() * 10) % 3;
-while (day <= DAYS_IN_MONTH) {
+
+function getWorkingHours(empCheck): number {
   switch (empCheck) {
     case 0: {
-      console.log("EMPLOYEE ABSENT");
+      return 0;
       break;
     }
     case 1: {
-      console.log("FULL TIME EMPLOYEE PRESENT");
-      totalSalary = (totalSalary + (WAGE_PER_HOUR * FULL_DAY_HOUR));
-    //   console.log("Monthly salary of full timer = " + totalSalary);
+      console.log("full timer");
+      return FULL_DAY_HOUR;
       break;
     }
     case 2: {
-      console.log("PART TIME EMPLOYEE PRESENT");
-      totalSalary = (totalSalary +  (WAGE_PER_HOUR * PART_TIME_HOUR));
-    //   console.log("Monthly salary of part timer = " + totalSalary);
+      console.log("part timer");
+      return PART_TIME_HOUR;
       break;
     }
     default: {
-      console.log("no employee found");
+      return 0;
       break;
     }
   }
-  day++;
 }
-console.log("monthly salary =" +totalSalary);
+while (hours < MAX_WORK_HOURS && days < DAYS_IN_MONTH) {
+  hours += getWorkingHours(empCheck);
+  days++;
+}
+totalSalary = hours * WAGE_PER_HOUR;
+console.log("salary is =" + totalSalary);
