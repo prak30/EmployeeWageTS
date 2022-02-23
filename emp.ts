@@ -11,7 +11,7 @@ let hours: number = 0;
 let empDailyWageArr: number[] = new Array();
 let empCheck: number = Math.floor(Math.random() * 10) % 3;
 
-function getWorkingHours(empCheck): number {
+function getWorkingHours(empCheck: number): number {
   switch (empCheck) {
     case 0: {
       return 0;
@@ -55,17 +55,31 @@ function sum(dailyWage: number){
 empDailyWageArr.forEach(sum);
 console.log("employee wage =" +totEmpWage);
 
-function totalWages(totalWage, dailyWage): number{
+function totalWages(totalWage: number, dailyWage: number): number{
   return totalWage + dailyWage;
 }
 console.log(" Emp Wage with reduce: " + empDailyWageArr.reduce(totalWages, 0));
 
 //UC7B
 let dailyCntr: number = 0;
-function mapDayWithWage(dailyWage): string{
+function mapDayWithWage(dailyWage: number){
     dailyCntr++;
     return dailyCntr + " = " + dailyWage;
 }
-let mapDayWithWageArr: string[] = empDailyWageArr.map(mapDayWithWage);
+let mapDayWithWageArr = empDailyWageArr.map(mapDayWithWage);
 console.log("Uc7B - Daily Wage Map");
 console.log(mapDayWithWageArr);
+
+//Uc-7C
+function fullTimeWage(dailyWage: string | string[]){
+  return dailyWage.includes("160");
+}
+let fullDayWageArr: string[] = mapDayWithWageArr.filter(fullTimeWage);
+console.log("Uc7C-Daily Wage Filter when Fulltime Earned");
+console.log(fullDayWageArr);
+
+//Uc-7D
+function findFullTimeWage(dailyWage: string | string[]){
+  return dailyWage.includes("160");
+}
+console.log("Uc7D - First time Fulltime wage was earned on Day: " + mapDayWithWageArr.find(findFullTimeWage));
