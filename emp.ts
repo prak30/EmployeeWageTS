@@ -49,6 +49,7 @@ console.log("employee wage =" +empWage);
 console.log("UC7A")
 let totEmpWage: number = 0;
 function sum(dailyWage: number){
+  console.log(dailyWage+"hii");
   totEmpWage += dailyWage;
 }
 empDailyWageArr.forEach(sum);
@@ -58,3 +59,13 @@ function totalWages(totalWage, dailyWage): number{
   return totalWage + dailyWage;
 }
 console.log(" Emp Wage with reduce: " + empDailyWageArr.reduce(totalWages, 0));
+
+//UC7B
+let dailyCntr: number = 0;
+function mapDayWithWage(dailyWage): string{
+    dailyCntr++;
+    return dailyCntr + " = " + dailyWage;
+}
+let mapDayWithWageArr: string[] = empDailyWageArr.map(mapDayWithWage);
+console.log("Uc7B - Daily Wage Map");
+console.log(mapDayWithWageArr);
